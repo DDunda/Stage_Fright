@@ -172,10 +172,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cue Card (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6856227462749729760, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -220,14 +216,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6856227463230782221, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856227463437003063, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1357064792}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
 --- !u!4 &841926512 stripped
@@ -355,7 +343,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b95d96b30dbcd747a0bb3f23d5907bc, type: 3}
   defaultSlide: {fileID: 21300000, guid: 92c812e2397ddf34db077251dfeba96c, type: 3}
   slideTimerLength: 3
-  cueCards: {fileID: 604687284}
+  xOffset: 5
+  cueCardParent: {fileID: 604687284}
   agitationRight: 0.8
   agitationWrong: 1.25
   agitationUndecided: 1
@@ -485,10 +474,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6856227463437003063, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1357064792}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
 --- !u!4 &1680107164 stripped

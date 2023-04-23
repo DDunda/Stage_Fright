@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PresentationController : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class PresentationController : MonoBehaviour
     private int currentSlide = 0; // the index of the current slide
 
     // cue card variables
-    public GameObject cueCards;
+    public float xOffset = 5.0f;
+    public GameObject cueCardParent;
+    private Transform card;
+    private List<Transform> cueCards = new List<Transform>();
     public List<List<string>> cardTitles = new List<List<string>>();
     public List<List<string>> cardSpeeches = new List<List<string>>();
 
@@ -39,16 +43,21 @@ public class PresentationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // define initial variables
         slideTimer = slideTimerLength;
         slide = this.GetComponent<SpriteRenderer>();
         slide.sprite = slideImages[0]; // start with the first slide
         ChangeCardState(false); // hide cue cards
 
+        // adding each cue card to a list
+        cueCards.Add(cueCardParent.transform.GetChild(0));
+        cueCards.Add(cueCardParent.transform.GetChild(1));
+        cueCards.Add(cueCardParent.transform.GetChild(2));
+
         // adding titles and speeches for each slide
         cardTitles.Add(new List<string> { "based", "cringe", "L" });
         cardTitles.Add(new List<string> { "2 + 2 = 4", "2 + 2 = 5", "2 + 2 = 3" });
         cardTitles.Add(new List<string> { "third example", "second example", "fifth example" });
-
         cardSpeeches.Add(new List<string> 
         { "This is the correct answer: good job, you did it! That is so cool of you.", 
            "Bad news: you really goofed this one up REAL bad. That's a dang old shame.", 
@@ -95,7 +104,7 @@ public class PresentationController : MonoBehaviour
     // enable/disable all cue cards
     private void ChangeCardState(bool state)
     {
-        cueCards.SetActive(state);
+        cueCardParent.SetActive(state);
     }
 
     // change the current mode, performing all necessary functions to do so
@@ -111,8 +120,8 @@ public class PresentationController : MonoBehaviour
                 slideTimer = slideTimerLength; // reset timer
                 break;
             case PresentMode.Choose:
-                SetCardText(); // change the text on the cue cards based on the current slide
-                ChangeCardState(true); // show cue cards
+                ChangeCardState(true); // show cue cards (very important that this happens first!)
+                InitialiseCards(); // change the text on the cue cards based on the current slide
                 slide.sprite = defaultSlide; // black out the current slide
                 break;
             case PresentMode.Speak:
@@ -121,13 +130,60 @@ public class PresentationController : MonoBehaviour
         }
     }
 
-    private void SetCardText()
-	{
-
+    private void InitialiseCards()
+    {
+        // randomise the positions of the cards
+        List<int> cardOrder = RandomIntegerList();
+        for (int i = 0; i < 3; i++)
+		{
+            card = cueCards[cardOrder[i]];
+            card.position = new Vector3((xOffset * (i - 1)), card.position.y, card.position.z);
+		}
+        
+        // set the text of each card
+        for (int a = 0; a < 3; a++)
+		{
+            Transform TMPObject = cueCards[a].GetChild(0);
+            TMPObject.GetComponent<TMP_Text>().text = cardTitles[currentSlide][a];
+		}
 	}
+
+    // for the sake of this code, generates a 3 entry list, with 0, 1 and 2 in a random order
+    // this isn't a great way to shuffle, but fuck it, it'll work!!
+    private List<int> RandomIntegerList()
+	{
+        int r;
+        var i = 3;
+        List<int> numbers = new List<int> { 0, 1, 2 };
+        List<int> intOrder = new List<int>();
+        while (i > 0)
+        {
+            r = Random.Range(0, 3); // 0, 1 or 2
+            if (numbers.Contains(r)) // if the random number hasn't been used yet, add it
+            {
+                intOrder.Add(r);
+                numbers.Remove(r);
+                i--;
+            }
+        }
+        Debug.Log(string.Format("Card order is {0}, {1}, {2}", intOrder[0], intOrder[1], intOrder[2]));
+
+        return intOrder;
+    }
 
     public void CardSelected(GameObject card)
 	{
-        Debug.Log("This button works!");
-	}
+        if (card.transform == cueCards[0]) // the correct answer was chosen
+		{
+            Debug.Log("This is card 0!");
+		}
+        if (card.transform == cueCards[1]) // no
+        {
+            Debug.Log("This is card 1!");
+        }
+        if (card.transform == cueCards[2]) // no
+        {
+            Debug.Log("This is card 2!");
+        }
+    }
 }
