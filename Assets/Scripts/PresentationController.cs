@@ -51,8 +51,8 @@ public class PresentationController : MonoBehaviour
 
         cardSpeeches.Add(new List<string> 
         { "This is the correct answer: good job, you did it! That is so cool of you.", 
-            "Bad news: you really goofed this one up REAL bad. That's a dang old shame.", 
-            "Short wrong answer." });
+           "Bad news: you really goofed this one up REAL bad. That's a dang old shame.", 
+           "Short wrong answer." });
         cardSpeeches.Add(new List<string>
         { "This is the correct answer: good job, you did it! That is so cool of you.",
           "Bad news: you really goofed this one up REAL bad. That's a dang old shame.",
@@ -74,10 +74,6 @@ public class PresentationController : MonoBehaviour
 				{
                     ChangeMode(PresentMode.Choose);
 				}
-                break;
-
-            default:
-                Debug.LogWarning("The current presentation mode is invalid!");
                 break;
         }
     }
@@ -132,6 +128,6 @@ public class PresentationController : MonoBehaviour
 
     public void CardSelected(GameObject card)
 	{
-        
+        Debug.Log("This button works!");
 	}
 }

@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604687284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.23797257, y: -0.32414743, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -164,6 +164,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 604687285}
     m_Modifications:
+    - target: {fileID: 3655903698516091294, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
+      propertyPath: presentation
+      value: 
+      objectReference: {fileID: 1357064792}
     - target: {fileID: 6856227462749729760, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_Name
       value: Cue Card (1)
@@ -178,15 +182,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.38
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.87
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalRotation.w
@@ -429,6 +433,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 604687285}
     m_Modifications:
+    - target: {fileID: 3655903698516091294, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
+      propertyPath: presentation
+      value: 
+      objectReference: {fileID: 1357064792}
     - target: {fileID: 6856227462749729760, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_Name
       value: Cue Card (2)
@@ -439,15 +447,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.96
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalRotation.w
@@ -568,6 +576,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 604687285}
     m_Modifications:
+    - target: {fileID: 3655903698516091294, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
+      propertyPath: presentation
+      value: 
+      objectReference: {fileID: 1357064792}
     - target: {fileID: 6856227462749729760, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_Name
       value: Cue Card
@@ -578,15 +590,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.91
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.96
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6856227462749729763, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
       propertyPath: m_LocalRotation.w
@@ -616,9 +628,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6856227463437003063, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1357064792}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4c33bca0c6a9de428ecf5153de14792, type: 3}
