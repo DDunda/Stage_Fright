@@ -22,7 +22,7 @@ public class ColorFadeScript : MonoBehaviour
     {
         value = Math.Max(startColorValue, value); // if less than startColorValue, set it to that
         value = Math.Min(endColorValue, value); // if more than endColorValue, set it to that
-        var eValue = (value - startColorValue) / endColorValue; // how much of the new color to keep (0 - 1)
+        var eValue = (value - startColorValue) / (endColorValue - startColorValue); // how much of the new color to keep (0 - 1)
         var sValue = 1 - eValue; // how much of the original color to keep (0 - 1)
 
         // average the RGBA values between start color and end color, and create a new color with them
