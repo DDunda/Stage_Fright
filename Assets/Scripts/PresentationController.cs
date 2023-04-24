@@ -28,6 +28,13 @@ public class PresentationController : MonoBehaviour
     public enum PresentMode {Read, Choose, Speak};
     private PresentMode mode = PresentMode.Read;
 
+    // speech variables
+    public TextMeshPro speechBox;
+    public float speechPause = 3; // how many seconds the speech stays up when it's completed
+    private string selectedSpeech;
+    private int currentChar = 0;
+    private bool correctSpeech = true; // whether the player chose the correct speech
+
     public float agitationRight = 0.8f; // the rate that agitation changes when a correct answer is chosen
     public float agitationWrong = 1.3f; // the rate that agitation changes when an incorrect answer is chosen
     public float agitationUndecided = 1.02f; // the rate that agitation changes while a cue card is being chosen
@@ -38,6 +45,28 @@ public class PresentationController : MonoBehaviour
     public PresentMode Mode
 	{
         get { return mode; }
+	}
+
+    // property: other scripts can read the current agitation multiplier
+    public float AgitationLevel
+	{
+        get
+		{
+            if (mode == PresentMode.Choose)
+			{
+                return agitationUndecided;
+			}
+            else if (mode == PresentMode.Speak)
+			{
+                // based on if this is the right answer or not, return a rate of change
+                if (correctSpeech) { return agitationRight; }
+                else { return agitationWrong; }
+			}
+            else
+			{
+                return 1.0f; // if reading the current slide, just use the normal rate of change
+			}
+		}
 	}
 
     // Start is called before the first frame update
@@ -177,13 +206,9 @@ public class PresentationController : MonoBehaviour
 		{
             Debug.Log("This is card 0!");
 		}
-        if (card.transform == cueCards[1]) // no
-        {
-            Debug.Log("This is card 1!");
-        }
-        if (card.transform == cueCards[2]) // no
-        {
-            Debug.Log("This is card 2!");
-        }
+        else // the incorrect answer was chosen
+		{
+            Debug.Log("This isn't card 0!");
+		}
     }
 }
