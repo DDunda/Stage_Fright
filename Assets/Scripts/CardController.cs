@@ -5,6 +5,7 @@ using UnityEngine;
 public class CardController : MonoBehaviour
 {
     public PresentationController presentation;
+	public int index = 0;
 
 	private void OnMouseOver()
 	{

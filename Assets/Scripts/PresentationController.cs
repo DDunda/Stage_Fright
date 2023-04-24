@@ -79,9 +79,12 @@ public class PresentationController : MonoBehaviour
         ChangeCardState(false); // hide cue cards
 
         // adding each cue card to a list
-        cueCards.Add(cueCardParent.transform.GetChild(0));
-        cueCards.Add(cueCardParent.transform.GetChild(1));
-        cueCards.Add(cueCardParent.transform.GetChild(2));
+        for (var i = 0; i < 3; i++)
+		{
+            var c = cueCardParent.transform.GetChild(i);
+            cueCards.Add(c);
+            c.GetComponent<CardController>().index = i; // for determining what speech to play
+        }
 
         // adding titles and speeches for each slide
         cardTitles.Add(new List<string> { "based", "cringe", "L" });
@@ -202,13 +205,18 @@ public class PresentationController : MonoBehaviour
 
     public void CardSelected(GameObject card)
 	{
-        if (card.transform == cueCards[0]) // the correct answer was chosen
+        var controller = card.GetComponent<CardController>();
+        if (controller.index == 0) // the correct answer was chosen
 		{
-            Debug.Log("This is card 0!");
+            correctSpeech = true;
 		}
         else // the incorrect answer was chosen
 		{
-            Debug.Log("This isn't card 0!");
+            correctSpeech = false;
 		}
+
+        selectedSpeech = cardSpeeches[currentSlide][controller.index];
+        Debug.Log(selectedSpeech); // test whether the correct speech is selected
+        //ChangeMode(PresentMode.Speak);
     }
 }
