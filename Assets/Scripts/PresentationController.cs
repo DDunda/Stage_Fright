@@ -29,10 +29,13 @@ public class PresentationController : MonoBehaviour
     private PresentMode mode = PresentMode.Read;
 
     // speech variables
-    public TextMeshPro speechBox;
-    public float speechPause = 3; // how many seconds the speech stays up when it's completed
+    public GameObject speechBox;
+    public float speechTickLength = 0.1f; // how many seconds it takes for a new character of the speech to appear
+    public float speechTick; 
+    public float speechEndTimerLength = 3.0f; // how many seconds the speech stays up when it's completed
+    public float speechEndTimer; 
     private string selectedSpeech;
-    private int currentChar = 0;
+    private int currentChar = 1;
     private bool correctSpeech = true; // whether the player chose the correct speech
 
     public float agitationRight = 0.8f; // the rate that agitation changes when a correct answer is chosen
@@ -72,11 +75,13 @@ public class PresentationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // define initial variables
-        slideTimer = slideTimerLength;
+        // define slide reference
         slide = this.GetComponent<SpriteRenderer>();
+        // define initial variables for PresentMode.Read
+        slideTimer = slideTimerLength;
         slide.sprite = slideImages[0]; // start with the first slide
         ChangeCardState(false); // hide cue cards
+        speechBox.SetActive(false); // hide speech box
 
         // adding each cue card to a list
         for (var i = 0; i < 3; i++)
@@ -116,15 +121,36 @@ public class PresentationController : MonoBehaviour
                     ChangeMode(PresentMode.Choose);
 				}
                 break;
+            case PresentMode.Speak:
+                if (currentChar < selectedSpeech.Length) // if giving speech
+				{
+                    speechTick -= Time.deltaTime;
+                    while (speechTick <= 0) // add characters to the speech if the timer is exhausted
+                    {
+                        currentChar++;
+                        UpdateSpeechText(currentChar);
+                        speechTick += speechTickLength; // add instead of set, for more accurate timing
+                    }
+                }
+                else // if at end of speech
+				{
+                    speechEndTimer -= Time.deltaTime;
+                    if (speechEndTimer <= 0) // once enough time has passed, show the next slide
+                    {
+                        NextSlide();
+                    }
+                }
+                break;
         }
     }
 
     private void NextSlide()
     {
         currentSlide++;
-        if (currentSlide <= slideImages.Length)
+        if (currentSlide < slideImages.Length)
         {
             slide.sprite = slideImages[currentSlide];
+            ChangeMode(PresentMode.Read);
         }
         else
         {
@@ -148,7 +174,7 @@ public class PresentationController : MonoBehaviour
         {
             case PresentMode.Read:
                 ChangeCardState(false); // hide cue cards
-                NextSlide();
+                speechBox.SetActive(false); // hide speech box
                 slideTimer = slideTimerLength; // reset timer
                 break;
             case PresentMode.Choose:
@@ -158,9 +184,24 @@ public class PresentationController : MonoBehaviour
                 break;
             case PresentMode.Speak:
                 ChangeCardState(false); // hide cue cards
+                speechBox.SetActive(true); // show speech box
+                currentChar = 1; // reset to start of string
+                speechEndTimer = speechEndTimerLength;
+                UpdateSpeechText(currentChar); // show the first character
                 break;
         }
     }
+
+    // show a certain amount of the speech in the speech box, as determined by the argument
+    private void UpdateSpeechText(int l = 0)
+	{
+        if (l == 0) // show the entire string
+        {
+            l = selectedSpeech.Length;
+		}
+
+        speechBox.GetComponent<TextMeshPro>().text = selectedSpeech.Substring(0, l);
+	}
 
     private void InitialiseCards()
     {
@@ -215,8 +256,8 @@ public class PresentationController : MonoBehaviour
             correctSpeech = false;
 		}
 
+        // update the speech, and begin to speak
         selectedSpeech = cardSpeeches[currentSlide][controller.index];
-        Debug.Log(selectedSpeech); // test whether the correct speech is selected
-        //ChangeMode(PresentMode.Speak);
+        ChangeMode(PresentMode.Speak);
     }
 }

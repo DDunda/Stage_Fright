@@ -345,8 +345,9 @@ MonoBehaviour:
   slideTimerLength: 3
   xOffset: 5
   cueCardParent: {fileID: 604687284}
-  speechBox: {fileID: 0}
-  speechPause: 0
+  speechBox: {fileID: 1395855738}
+  speechTick: 0.05
+  speechPause: 3
   agitationRight: 0.8
   agitationWrong: 1.25
   agitationUndecided: 1
@@ -455,7 +456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -586,8 +587,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.5}
-  m_SizeDelta: {x: 17.75, y: 5}
+  m_AnchoredPosition: {x: 0, y: -3.0284}
+  m_SizeDelta: {x: 17.75, y: 3.9432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1680107163
 PrefabInstance:
