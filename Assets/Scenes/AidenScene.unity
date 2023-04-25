@@ -370,6 +370,7 @@ MonoBehaviour:
   - {fileID: 614293944}
   - {fileID: 985019562}
   viewIndex: 0
+  environmentController: {fileID: 129660192}
 --- !u!1 &151881308
 GameObject:
   m_ObjectHideFlags: 0

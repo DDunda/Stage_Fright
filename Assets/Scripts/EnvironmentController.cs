@@ -21,19 +21,12 @@ public class EnvironmentController : MonoBehaviour
 		{
             testValue += 2;
             Debug.Log(string.Format("Fade value is now {0}", testValue));
-            for (var i = 0; i < environments.Length; i++)
-			{
-                FadeEnvironment(environments[i], testValue);
-            }
+            
 		}
         if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
             testValue -= 2;
             Debug.Log(string.Format("Fade value is now {0}", testValue));
-            for (var i = 0; i < environments.Length; i++)
-            {
-                FadeEnvironment(environments[i], testValue);
-            }
         }
     }
 
@@ -54,4 +47,14 @@ public class EnvironmentController : MonoBehaviour
             FadeEnvironment(obj.transform.GetChild(i).gameObject, value);
 		}
 	}
+
+    // set up the variables for changing the environment
+    // TODO: this needs to be changed so that the anxiety value is passed as an argument to replace testValue
+    public void UpdateEnvironment()
+	{
+        for (var i = 0; i < environments.Length; i++)
+        {
+            FadeEnvironment(environments[i], testValue);
+        }
+    }
 }

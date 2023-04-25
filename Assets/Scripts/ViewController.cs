@@ -7,6 +7,7 @@ public class ViewController : MonoBehaviour
 {
     public Transform[] views = new Transform[2]; // the views to change between
     public int viewIndex = 0; // the current view
+    public EnvironmentController environmentController;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class ViewController : MonoBehaviour
 	{
         ChangeVisibility(views[oldIndex], false);
         ChangeVisibility(views[newIndex], true);
+        environmentController.UpdateEnvironment();
     }
 
     // disable/enable sprite renderers for all children under an object
