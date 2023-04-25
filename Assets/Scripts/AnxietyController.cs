@@ -12,9 +12,7 @@ public class AnxietyController : MonoBehaviour
 	[SerializeField]
 	private float _anxietyLevel = 0f;
 	[SerializeField]
-	private float _minAnxiety = 0f;
-	[SerializeField]
-	private float _maxAnxiety = 100f;
+	private Range<float> _anxietyRange = new(0f, 100f);
 
 	public static float anxietyLevel
 	{
@@ -25,16 +23,15 @@ public class AnxietyController : MonoBehaviour
 	// Transforms anxietyLevel to a 0 - 1 range where 0 represents minAnixety and 1 represents maxAnxiety
 	public static float anxietyLevel01
 	{
-		get => Mathf.InverseLerp(minAnxiety, maxAnxiety, anxietyLevel);
-		private set => anxietyLevel = Mathf.Lerp(minAnxiety, maxAnxiety, value);
+		get => anxietyRange.InverseLerp(anxietyLevel);
+		private set => anxietyLevel = anxietyRange.Lerp(value);
 	}
 
-	public static float minAnxiety { get => Instance._minAnxiety; }
-	public static float maxAnxiety { get => Instance._maxAnxiety; }
+	public static Range<float> anxietyRange { get => Instance._anxietyRange; }
 
 	public static void ChangeAnxiety(float difference)
 	{
-		anxietyLevel = Mathf.Clamp(anxietyLevel + difference, minAnxiety, maxAnxiety);
+		anxietyLevel = anxietyRange.Clamp(anxietyLevel + difference);
 	}
 
 	public static void ChangeAnxiety01(float difference)
