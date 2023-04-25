@@ -11,7 +11,11 @@ public class CardController : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0)) // if left click on card
 		{
-            presentation.CardSelected(this.gameObject); // pass this card as an argument
+			// only run the function if the card is visible
+			if (this.GetComponent<SpriteRenderer>().enabled) 
+			{
+				presentation.CardSelected(this.gameObject); // pass this card as an argument
+			}
 		}
 	}
 }
