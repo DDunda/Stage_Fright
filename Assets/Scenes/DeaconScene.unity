@@ -519,8 +519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anxietyLevel: 0
-  _minAnxiety: 0
-  _maxAnxiety: 100
+  _anxietyRange:
+    min: 0
+    max: 100
 --- !u!4 &1131929697
 Transform:
   m_ObjectHideFlags: 0
@@ -783,10 +784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f695d8c3ee10993419f24664c5338eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spotlight: {fileID: 1755950879}
+  spotlight: {fileID: 1755950880}
   cam: {fileID: 1935295375}
-  minScale: 1
-  maxScale: 50
+  spotlightScale:
+    min: 5
+    max: 50
   scaleCurve:
     serializedVersion: 2
     m_Curve:
@@ -813,9 +815,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   darknessColourCurve:
     serializedVersion: 2
-    key0: {r: 0.2735849, g: 0.26687434, b: 0.26687434, a: 0}
-    key1: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 0.36078432}
-    key2: {r: 0.18867922, g: 0.10751155, b: 0.10751155, a: 0.6901961}
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+    key2: {r: 0.18867922, g: 0.10751155, b: 0.10751155, a: 1}
     key3: {r: 0.11320752, g: 0.018583115, b: 0.018583115, a: 1}
     key4: {r: 0.11320752, g: 0.018583115, b: 0.018583115, a: 1}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -830,8 +832,8 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 14456
-    atime2: 28913
+    atime1: 65535
+    atime2: 65535
     atime3: 65535
     atime4: 65535
     atime5: 0
@@ -839,7 +841,36 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 4
+    m_NumAlphaKeys: 2
+  spotlightColourCurve:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0.696, g: 0.60899997, b: 0.47125003, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &1755950878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1033,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1935295373}
   - component: {fileID: 1935295375}
-  - component: {fileID: 1935295374}
   m_Layer: 0
   m_Name: SpotlightCamera
   m_TagString: Untagged
@@ -1025,14 +1055,6 @@ Transform:
   m_Father: {fileID: 1738142843}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1935295374
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935295372}
-  m_Enabled: 1
 --- !u!20 &1935295375
 Camera:
   m_ObjectHideFlags: 0
@@ -1043,7 +1065,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
