@@ -29,6 +29,18 @@ public class AnxietyController : MonoBehaviour
 
 	public static Range<float> anxietyRange { get => Instance._anxietyRange; }
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.DownArrow))
+		{
+			_anxietyLevel -= 1;
+		}
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			_anxietyLevel += 1;
+		}
+	}
+
 	public static void ChangeAnxiety(float difference)
 	{
 		anxietyLevel = anxietyRange.Clamp(anxietyLevel + difference);

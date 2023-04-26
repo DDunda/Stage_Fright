@@ -9,6 +9,7 @@ public class CardController : MonoBehaviour
 
 	private void OnMouseOver()
 	{
+		Debug.Log(string.Format("The mouse is over cue card {0}", index));
 		if (Input.GetMouseButtonDown(0)) // if left click on card
 		{
 			// only run the function if the card is visible

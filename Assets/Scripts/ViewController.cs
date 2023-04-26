@@ -55,7 +55,7 @@ public class ViewController : MonoBehaviour
 	{
         ChangeVisibility(views[oldIndex], false);
         ChangeVisibility(views[newIndex], true);
-        environmentController.UpdateEnvironment();
+        environmentController.UpdateEnvironment(AnxietyController.anxietyLevel);
     }
 
     // disable/enable sprite renderers for all children under an object

@@ -7,7 +7,7 @@ public class AmbientNoiseController : MonoBehaviour
     public AudioClip[] ambientClips = new AudioClip[5];
     public AnimationCurve[] volumesOverTime = new AnimationCurve[5];
     private AudioSource[] ambientSources;
-    private float testValue = 0; // the value used instead of anxiety FOR NOW
+    private float currentAnxiety = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,16 +30,11 @@ public class AmbientNoiseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // FOR TESTING PURPOSES: press up/down to change the fade of the environment
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            testValue += 2;
-            UpdateSounds(testValue);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            testValue -= 2;
-            UpdateSounds(testValue);
+        // only change the ambient noise when the anxiety level changes
+        if (currentAnxiety != AnxietyController.anxietyLevel)
+		{
+            currentAnxiety = AnxietyController.anxietyLevel;
+            UpdateSounds(AnxietyController.anxietyLevel);
         }
     }
 

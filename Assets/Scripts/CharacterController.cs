@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour
 	public Collider2D collider;
 	public LayerMask visionLayer;
 	public LayerMask eyeContactLayer;
+	private SpriteRenderer sprite;
 
 	[Header("Discomfort")]
 	[Range(0f, 1f)]
@@ -32,9 +33,14 @@ public class CharacterController : MonoBehaviour
 
 	public float agitationAnxietyRate = 0.01f; // How fast agitation increases anxiety
 
+	private void Start()
+	{
+		sprite = transform.GetComponent<SpriteRenderer>();
+	}
+
 	private void Update()
 	{
-		if (collider.IsTouchingLayers(visionLayer))
+		if (sprite.enabled)
 		{
 			if (collider.IsTouchingLayers(eyeContactLayer))
 			{
@@ -57,7 +63,7 @@ public class CharacterController : MonoBehaviour
 		{
 			agitation += discomfortAgitationRate * Time.deltaTime;
 		}
-		else if (collider.IsTouchingLayers(visionLayer))
+		else if (sprite.enabled)
 		{
 			agitation += passiveAgitationRate * Time.deltaTime;
 		}
