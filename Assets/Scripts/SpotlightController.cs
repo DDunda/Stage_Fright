@@ -15,6 +15,10 @@ public class SpotlightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 pos = cam.ViewportToWorldPoint(Camera.main.ScreenToViewportPoint(Input.mousePosition));
+        pos.z = spotlight.transform.position.z;
+        spotlight.transform.position = pos;
+
         spotlight.transform.localScale = Vector2.one * spotlightScale.Lerp(scaleCurve.Evaluate(AnxietyController.anxietyLevel01));
         cam.backgroundColor = darknessColourCurve.Evaluate(AnxietyController.anxietyLevel01);
         spotlight.color = spotlightColourCurve.Evaluate(AnxietyController.anxietyLevel01);

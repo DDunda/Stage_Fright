@@ -12,18 +12,10 @@ public class ViewController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var enabled = true;
-
         // loop through all objects, changing their visibility so that only the viewIndex is visible
         for (var i = 0; i < views.Length; i++)
 		{
-            enabled = false;
-            if (i == viewIndex)
-			{
-                enabled = true;
-			}
-
-            ChangeVisibility(views[i], enabled);
+            ChangeVisibility(views[i], i == viewIndex);
 		}
     }
 
@@ -44,7 +36,7 @@ public class ViewController : MonoBehaviour
             var oldIndex = viewIndex;
 
             viewIndex += 1;
-            if (viewIndex > (views.Length - 1)) { viewIndex = 0; }
+            if (viewIndex >= views.Length) { viewIndex = 0; }
 
             ChangeView(oldIndex, viewIndex);
         }
@@ -72,6 +64,11 @@ public class ViewController : MonoBehaviour
         if (text != null)
         {
             text.enabled = state;
+        }
+        var cam = obj.GetComponent<Camera>();
+        if (cam != null)
+        {
+            cam.enabled = state;
         }
 
         for (var i = 0; i < obj.childCount; i++)

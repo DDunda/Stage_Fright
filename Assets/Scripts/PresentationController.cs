@@ -8,6 +8,8 @@ public class PresentationController : MonoBehaviour
     // slide variables
     public Sprite[] slideImages = new Sprite[5]; // the list of slide sprites
     public Sprite defaultSlide; // the slide used when the presentation is over
+    public SpriteRenderer glowSprite; // Used for glowing effect of slide
+    public Color glowTint = Color.white; // Used to tint the glow
     private SpriteRenderer slide; // this object's sprite renderer
     public float slideTimerLength = 25; // how many seconds each slide lasts for
     private float slideTimer;
@@ -80,6 +82,7 @@ public class PresentationController : MonoBehaviour
         // define initial variables for PresentMode.Read
         slideTimer = slideTimerLength;
         slide.sprite = slideImages[0]; // start with the first slide
+        glowSprite.color = glowTint;
         ChangeCardState(false); // hide cue cards
         speechBox.SetActive(false); // hide speech box
 
@@ -160,12 +163,14 @@ public class PresentationController : MonoBehaviour
         if (currentSlide < slideImages.Length)
         {
             slide.sprite = slideImages[currentSlide];
+            glowSprite.color = glowTint;
             ChangeMode(PresentMode.Read);
         }
         else
         {
             presenting = false;
             slide.sprite = defaultSlide;
+            glowSprite.color = Color.clear;
         }
     }
 
@@ -191,6 +196,7 @@ public class PresentationController : MonoBehaviour
                 ChangeCardState(true); // show cue cards (very important that this happens first!)
                 InitialiseCards(); // change the text on the cue cards based on the current slide
                 slide.sprite = defaultSlide; // black out the current slide
+                glowSprite.color = Color.clear;
                 break;
             case PresentMode.Speak:
                 ChangeCardState(false); // hide cue cards
