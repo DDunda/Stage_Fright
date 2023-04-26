@@ -148,8 +148,9 @@ MonoBehaviour:
   staringDiscomfortRate: 0.1
   discomfortAgitationThreshold: 0.7
   agitation: 0
-  passiveAgitationRate: -0.01
+  passiveAgitationRate: 0.01
   ignoreAgitationRate: 0.02
+  staringAgitationRate: -0.03
   discomfortAgitationRate: 0.03
   agitationAnxietyThreshold: 0.7
   agitationAnxietyRate: 0.01

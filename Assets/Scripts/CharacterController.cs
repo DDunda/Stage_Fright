@@ -23,8 +23,9 @@ public class CharacterController : MonoBehaviour
 	[Header("Agitation")]
 	[Range(0f,1f)]
 	public float agitation = 0f; // How agitated this person is (0-1)
-	public float passiveAgitationRate = -0.01f;
+	public float passiveAgitationRate = 0.01f;
 	public float ignoreAgitationRate = 0.02f;
+	public float staringAgitationRate = -0.02f; // How fast staring decreases agitation if not uncomfortable
 	public float discomfortAgitationRate = 0.03f; // How fast discomfort increases agitation
 
 	public float agitationAnxietyThreshold = 0.7f; // The amount of agitation needed to start adding anxiety
@@ -37,6 +38,10 @@ public class CharacterController : MonoBehaviour
 		{
 			if (collider.IsTouchingLayers(eyeContactLayer))
 			{
+				if (discomfort < discomfortAgitationThreshold)
+				{
+					agitation += staringAgitationRate * Time.deltaTime;
+				}
 				discomfort += staringDiscomfortRate * Time.deltaTime;
 			}
 			else
