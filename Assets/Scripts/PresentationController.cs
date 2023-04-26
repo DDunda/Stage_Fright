@@ -92,21 +92,31 @@ public class PresentationController : MonoBehaviour
         }
 
         // adding titles and speeches for each slide
-        cardTitles.Add(new List<string> { "based", "cringe", "L" });
-        cardTitles.Add(new List<string> { "2 + 2 = 4", "2 + 2 = 5", "2 + 2 = 3" });
-        cardTitles.Add(new List<string> { "third example", "second example", "fifth example" });
+        cardTitles.Add(new List<string> { "This is a hexagon", "This is a pentagon", "This is an octagon" });
+        cardTitles.Add(new List<string> { "This shape has 10 sides", "This shape has 12 sides", "This shape has 9 sides" });
+        cardTitles.Add(new List<string> { "There are four lightning bolts", "There are three lightning bolts", "There are five lightning bolts" });
+        cardTitles.Add(new List<string> { "The foreground colors are green and yellow", "The foreground colors are blue and yellow", "The foreground colors are blue and green" });
+        cardTitles.Add(new List<string> { "Eight eyes watch.", "Nine eyes watch.", "Ten eyes watch." });
         cardSpeeches.Add(new List<string> 
-        { "This is the correct answer: good job, you did it! That is so cool of you.", 
-           "Bad news: you really goofed this one up REAL bad. That's a dang old shame.", 
-           "Short wrong answer." });
+        { "This is a hexagon, a shape with 6 sides. They are commonly seen in tiling and graphic design.", 
+           "This is a pentagon, a shape with 6 sides. Actually wait, it's 5 sides, isn't it? Hang on, one second...",
+           "This is an octagon, a shape with 6 sides. Actually wait, it's 8 sides, isn't it? Hang on, one second..." });
         cardSpeeches.Add(new List<string>
-        { "This is the correct answer: good job, you did it! That is so cool of you.",
-          "Bad news: you really goofed this one up REAL bad. That's a dang old shame.",
-          "Short wrong answer." });
+        { "This shape has 10 sides, meaning that there are 1440 degrees inside it, and each angle is 144 degrees.",
+          "This shape has 12 sides... wait, can I go back? Sorry, I think it's going on its own. I guess I'll keep going...?",
+          "This shape has 9 sides... wait, can I go back? Sorry, I think it's going on its own. I guess I'll keep going...?" });
         cardSpeeches.Add(new List<string>
-        { "This is the correct answer: good job, you did it! That is so cool of you.",
-          "Bad news: you really goofed this one up REAL bad. That's a dang old shame.",
-          "Short wrong answer." });
+        { "There are four lightning bolts in this slide, representing the four main points I want to discuss today.",
+          "          I... don't remember why I put this slide in here...          ",
+          "          I... don't remember why I put this slide in here...          " });
+        cardSpeeches.Add(new List<string>
+        { "Green and yellow, green and yellow, green and yellow, green and yellow, green and yellow",
+          "Green and yellow, green and yellow, green and yellow, green and yellow, green and yellow",
+          "Green and yellow, green and yellow, green and yellow, green and yellow, green and yellow" });
+        cardSpeeches.Add(new List<string>
+        { "...............................................................",
+          "...............................................................",
+          "..............................................................." });
     }
 
     // Update is called once per frame
