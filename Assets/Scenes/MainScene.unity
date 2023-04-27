@@ -3265,7 +3265,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!224 &1395855741
 RectTransform:
@@ -4170,6 +4170,14 @@ PrefabInstance:
     - target: {fileID: 6882744082419488292, guid: 1dcb41f5aa1a7ef4fa6b5f47595ca2a6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882744082419488297, guid: 1dcb41f5aa1a7ef4fa6b5f47595ca2a6, type: 3}
+      propertyPath: ignoreAgitationRate
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882744082419488297, guid: 1dcb41f5aa1a7ef4fa6b5f47595ca2a6, type: 3}
+      propertyPath: passiveAgitationRate
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6882744082419488299, guid: 1dcb41f5aa1a7ef4fa6b5f47595ca2a6, type: 3}
       propertyPath: m_RootOrder
