@@ -367,8 +367,8 @@ MonoBehaviour:
   staringDiscomfortRate: 0.125
   discomfortAgitationThreshold: 0.7
   agitation: 0
-  passiveAgitationRate: 0
-  ignoreAgitationRate: 0.01
+  passiveAgitationRate: 0.01
+  ignoreAgitationRate: 0.02
   staringAgitationRate: -0.05
   discomfortAgitationRate: 0.05
   agitationAnxietyThreshold: 0.7
@@ -409,5 +409,5 @@ MonoBehaviour:
     targetAnxiety01: 0.5
     tint: {r: 1, g: 1, b: 1, a: 1}
   - spriteRenderer: {fileID: 42254240590862905}
-    targetAnxiety01: 1
+    targetAnxiety01: 0.9
     tint: {r: 1, g: 1, b: 1, a: 1}
